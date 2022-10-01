@@ -1,0 +1,129 @@
+{% extends 'base.html' %}
+{%- set site_title = 'Universal Explorer' -%}
+{%- set html_title = 'Mission 1'-%}
+
+{% block content %}
+    <br><br>
+    <h1 class="text-center mt-3">{{ html_title }}</h1>
+    <hr>
+    <div class="container">
+      <form role="form" id="formMain" action="" method="post">
+        <div class="offset-lg-2 col-lg-8 offset-md-2 col-md-8">
+            <nav>
+              <div class="nav nav-pills nav-fill" id="nav-tab" role="tablist">
+                <a id="01-tab" data-bs-toggle="tab" href="#q01" class="nav-link active">Q1</a>
+                <a id="02-tab" data-bs-toggle="tab" href="#q02" class="nav-link">Q2</a>
+                <a id="03-tab" data-bs-toggle="tab" href="#q03" class="nav-link">Q3</a>
+                <a id="04-tab" data-bs-toggle="tab" href="#q04" class="nav-link">Q4</a>
+              </div>
+            </nav>
+            <br>
+            <div class="tab-content" id="nav-tabContent">
+                <div id="q01"  class="tab-pane show active">
+                    <img src="/static/quiz/1-1-Q.png" alt="">
+                    <div class="form-group">
+                      <hr>
+                      <h3 id="01ans"></h3>
+                      
+                      <button type="button" class="img_b" id="ans01-A"><img src="/static/quiz/1-1-A.png" alt=""></button>
+                      <br>
+                      <button type="button" class="img_b" id="ans01-B"><img src="/static/quiz/1-1-B.png" alt=""></button>
+                      <br>
+                      <button type="button" class="img_b" id="ans01-C"><img src="/static/quiz/1-1-C.png" alt=""></button>
+                      <br>
+                      <button type="button" class="img_b" id="ans01-D"><img src="/static/quiz/1-1-D.png" alt=""></button>
+                      <br><br><br><br>
+                    </div>
+                </div>
+
+                <div id="q02" class="tab-pane fade">
+                    <img src="/static/quiz/1-2-Q.png" alt="">
+                    <div class="form-group">
+                      <hr>
+                      <h3 id="02ans"></h3>
+                      
+                      <button type="button" class="img_b" id="ans02-A"><img src="/static/quiz/1-2-A.png" alt=""></button>
+                      <br>
+                      <button type="button" class="img_b" id="ans02-B"><img src="/static/quiz/1-2-B.png" alt=""></button>
+                      <br>
+                      <button type="button" class="img_b" id="ans02-C"><img src="/static/quiz/1-2-C.png" alt=""></button>
+                      <br>
+                      <button type="button" class="img_b" id="ans02-D"><img src="/static/quiz/1-2-D.png" alt=""></button>
+                      <br><br>
+                      
+                    </div>
+                </div>
+              
+                <div id="q03"  class="tab-pane fade">
+                    <img src="/static/quiz/1-3-Q.png" alt="">
+                    <div class="form-group">
+                      <hr>
+                      <h3 id="03ans"></h3>
+                      
+                      <button type="button" class="img_b" id="ans03-A"><img src="/static/quiz/1-3-A.png" alt=""></button>
+                      <br>
+                      <button type="button" class="img_b" id="ans03-B"><img src="/static/quiz/1-3-B.png" alt=""></button>
+                      <br>
+                      <button type="button" class="img_b" id="ans03-C"><img src="/static/quiz/1-3-C.png" alt=""></button>
+                      <br>
+                      <button type="button" class="img_b" id="ans03-D"><img src="/static/quiz/1-3-D.png" alt=""></button>
+                      <br><br>
+                    </div>
+                </div>
+              
+                
+                <div id="q04"  class="tab-pane fade">
+                    <img src="/static/quiz/1-4-Q.png" alt="">
+                    <div class="form-group">
+                      <hr>
+                      <h3 id="04ans"></h3>
+                      
+                      <button type="button" class="img_b" id="ans04-A"><img src="/static/quiz/1-4-A.png" alt=""></button>
+                      <br>
+                      <button type="button" class="img_b" id="ans04-B"><img src="/static/quiz/1-4-B.png" alt=""></button>
+                      <br>
+                      <button type="button" class="img_b" id="ans04-C"><img src="/static/quiz/1-4-C.png" alt=""></button>
+                      <br>
+                      <button type="button" class="img_b" id="ans04-D"><img src="/static/quiz/1-4-D.png" alt=""></button>
+                      <br>
+                      
+                    </div>
+                    <br>
+                    <button type="button" class="btn" id="submit">Submit</button>
+                </div>
+            </div>
+        </div>
+      </form>
+    </div>
+{% endblock %}
+
+{%- block extra_js %}
+    <script>
+      $('button[id^=ans]').on('click', function() {
+          $('#'+this.id.slice(3, 5)+'ans').text("Your answer is "+this.id.slice(6, 7));
+      });
+      $('#submit').on('click', function() {
+        formData = {'01':$('#01ans').text().slice(15,16), 
+                    '02':$('#02ans').text().slice(15,16),
+                    '03':$('#03ans').text().slice(15,16), 
+                    '04':$('#04ans').text().slice(15,16)
+                   }
+        $.ajax({'type': 'POST', 'data': formData, 'url': '/checkq1'})
+        .done(function(data, textStatus, jqXHR) {
+            if(data['result']){
+              toastr.success('^_^');
+              alert('Please enter the next challenge~~');
+              window.location = '/2';
+            }
+            else{
+              toastr.error('T_T');
+              alert('Are you sure? ^_^');
+              window.location = '/story1';
+            }
+            
+        })
+        .fail(function(jqXHR, textStatus, errorThrown) { alertError(jqXHR.status); })
+        .always();
+      });
+    </script>
+{% endblock %}
