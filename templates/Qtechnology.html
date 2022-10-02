@@ -1,6 +1,6 @@
 {% extends 'base.html' %}
 {%- set site_title = 'Universal Explorer' -%}
-{%- set html_title = 'Mission 3'-%}
+{%- set html_title = 'Challenge 3'-%}
 
 {% block content %}
     <br><br>
@@ -73,7 +73,7 @@
             if(data['result']){
               toastr.success('^_^');
               alert('Please enter the next challenge~~');
-              window.location = '/2';
+              window.location = '/last';
             }
             else{
               toastr.error('T_T');

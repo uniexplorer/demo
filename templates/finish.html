@@ -1,0 +1,44 @@
+{% extends 'base.html' %}
+{%- set site_title = 'Universal Explorer' -%}
+{%- set html_title = 'Launch'-%}
+
+{% block content %}
+<style>
+  .test{
+    width:20%;
+  }
+</style>
+
+    <br><br>
+    <h1 class="text-center mt-3">{{ html_title }}</h1>
+    <hr>
+
+    <div class="row">
+      <div class="material col-2">
+        <div class="cam_move">
+          <img src="/static/dna.png" class="mt-3" width="70" height="70" alt="">
+        </div>
+      </div>
+      
+      <div class="col-10">
+        <h5 class="color-one">Congratulation! You got Faraday cup and Starboard booster engines.</h5>
+        <div class="col-10">
+        <span>Faraday cup is the key sensor on the spacecraft, which measures the ions and electrons that make up the solar wind and coronal plasma. Because the solar wind flows primarily radially away from the Sun, it is desirable to have an instrument pointed directly at the Sun for those times when the spacecraft's azimuthal velocity is small relative to the solar wind speed. The desire to be pointed directly at the solar wind results in the instrument also being exposed directly to the solar photon flux. Thus, while SPC's measurement method is extremely similar to previous instruments such as the Sun-pointing Voyager PLS and DSCOVR Faraday cup, its material construction is vastly different.The grids and housing are constructed out of refractory metals and alloys (e.g., tungsten, molybdenum, niobium) and sapphire insulators to resist the high temperatures encountered near the Sun.</span>
+
+     <!--   <div class="col-2"> -->
+      <div class="test">    <img src="/static/cup.png" width="30" height="80" alt=""></div></div>
+        
+        <p>The Delta IV booster tanks are structurally rigid and constructed of isogrid aluminum barrels, spun-formed aluminum domes and machined aluminum tank skirts. 
+  Booster propulsion is provided by three liquid hydrogen and liquid oxygen-burning RS-68A engines. 
+  Each RS-68A engine produces 702,000 lbs of thrust for a combined total liftoff thrust of more than 2.1 million pounds. 
+  Booster cryogenic tanks are insulated with a combination of spray-on and bond-on insulation and helium-purged insulation blankets. 
+  The boosters are controlled by the DCSS avionics system, which provides guidance and flight control.</p>
+        
+      </div>
+    </div>
+
+<!--test-->
+
+  <hr>
+  <a href="/collect" class="btn quiz" >Finish collecting!</a>
+{% endblock %}

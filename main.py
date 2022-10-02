@@ -19,6 +19,11 @@ def home3():
     return render_template('home3.html')
 
 
+@app.route('/last')
+def last():
+    return render_template('Qultimate.html')
+
+
 @app.route('/story1')
 def story():
     return render_template('goal.html')
@@ -33,6 +38,14 @@ def timeline():
 def technology():
     return render_template('technology.html')
 
+
+@app.route('/finish')
+def finish():
+    return render_template('finish.html')
+
+@app.route('/collect')
+def collect():
+    return render_template('collect.html')
 
 @app.route('/test')
 def test():
@@ -69,6 +82,7 @@ def checkq1():
         return {'result': True}
     return {'result': False}
 
+
 @app.route('/checkq2', methods=['POST'])
 def checkq2():
     c = 0
@@ -79,6 +93,7 @@ def checkq2():
     if c >= 1:
         return {'result': True}
     return {'result': False}
+
 
 @app.route('/checkq3', methods=['POST'])
 def checkq3():
@@ -91,6 +106,17 @@ def checkq3():
         return {'result': True}
     return {'result': False}
 
+
+@app.route('/checkq4', methods=['POST'])
+def checkq4():
+    c = 0
+    if request.form['01'] == 'B':
+        c += 1
+    if request.form['02'] == 'A':
+        c += 1
+    if c >= 1:
+        return {'result': True}
+    return {'result': False}
 
 
 app.run(host='0.0.0.0', port=81)

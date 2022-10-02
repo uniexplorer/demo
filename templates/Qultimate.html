@@ -1,0 +1,105 @@
+{% extends 'base.html' %}
+{%- set site_title = 'Universal Explorer' -%}
+{%- set html_title = 'Ultimate Challenge' -%}
+
+{% block content %}
+    <br><br>
+    <h1 class="text-center mt-3">{{ html_title }}</h1>
+    <hr>
+    <div class="row">
+      <div class="material col-2">
+        <img src="/static/crucible.png" class="mt-3" width="50" height="55" alt="">
+      </div>
+      <div class="col-10">
+        <h5 class="color-one">Congratulation! You got Niobium-C103.  </h5>
+        <p>Niobium-C103 is a heat-resisting material that builds the conducting tables and antennas. </p>
+        <p>To unlock the mysteries of the corona, but also to protect a society that is increasingly dependent on technology from the threats of space weather, Parker is capable of multiple survey-related tasks. It withstands extreme environments outside the space. Help us assemble Parker Solar Probe and complete four significant investigations: Fields Experiment (FIELDS), Integrated Science Investigation of the Sun (IS☉IS), Wide-field Imager for Solar PRobe (WISPR),Solar Wind Electrons Alphas and Protons (SWEAP) Investigation.</p>
+      </div>
+    </div>
+    <hr>
+
+    <div class="container">
+      <div class="row">
+        <form role="form" id="formMain" action="" method="post">
+          <div class="offset-lg-2 col-lg-8 offset-md-2 col-md-8">
+              <nav>
+                <div class="nav nav-pills nav-fill" id="nav-tab" role="tablist">
+                  <a id="01-tab" data-bs-toggle="tab" href="#q01" class="nav-link active">Q1</a>
+                  <a id="02-tab" data-bs-toggle="tab" href="#q02" class="nav-link">Q2</a>
+                </div>
+              </nav>
+              <br>
+              <div class="tab-content" id="nav-tabContent">
+                  <div id="q01"  class="tab-pane show active">
+                      <img src="/static/quiz/4-1-Q.png" alt="">
+                      <div class="form-group">
+                        <hr>
+                        <h3 id="01ans"></h3>
+                        
+                        <button type="button" class="img_b" id="ans01-A"><img src="/static/quiz/4-1-A.png" alt=""></button>
+                        <br>
+                        <button type="button" class="img_b" id="ans01-B"><img src="/static/quiz/4-1-B.png" alt=""></button>
+                        <br>
+                        <button type="button" class="img_b" id="ans01-C"><img src="/static/quiz/4-1-C.png" alt=""></button>
+                        <br>
+                        <button type="button" class="img_b" id="ans01-D"><img src="/static/quiz/4-1-D.png" alt=""></button>
+                        <br><br><br><br>
+                      </div>
+                  </div>
+                 
+                  <div id="q02"  class="tab-pane fade">
+                      <img src="/static/quiz/4-2-Q.png" alt="">
+                      <div class="form-group">
+                        <hr>
+                        <h3 id="02ans"></h3>
+                        
+                        <button type="button" class="img_b" id="ans02-A"><img src="/static/quiz/4-2-A.png" alt=""></button>
+                        <br><br>
+                        <button type="button" class="img_b" id="ans02-B"><img src="/static/quiz/4-2-B.png" alt=""></button>
+                        <br><br>
+                        <button type="button" class="img_b" id="ans02-C"><img src="/static/quiz/4-2-C.png" alt=""></button>
+                        <br><br>
+                        <button type="button" class="img_b" id="ans02-D"><img src="/static/quiz/4-2-D.png" alt=""></button>
+                        <br><br><br>
+                          
+                        </div>
+                        <br>
+                        <button type="button" class="btn" id="submit">Submit</button>
+                    </div>
+                </div>
+            </div>
+        </form>
+      </div>
+    </div>
+
+    
+{% endblock %}
+
+{%- block extra_js %}
+    <script>
+      $('button[id^=ans]').on('click', function() {
+          $('#'+this.id.slice(3, 5)+'ans').text("Your answer is "+this.id.slice(6, 7));
+      });
+      $('#submit').on('click', function() {
+        formData = {'01':$('#01ans').text().slice(15,16), 
+                    '02':$('#02ans').text().slice(15,16),
+                   }
+        $.ajax({'type': 'POST', 'data': formData, 'url': '/checkq3'})
+        .done(function(data, textStatus, jqXHR) {
+            if(data['result']){
+              toastr.success('^_^');
+              alert('Please enter the next challenge~~');
+              window.location = '/finish';
+            }
+            else{
+              toastr.error('T_T');
+              alert('Are you sure? ^_^');
+              window.location = '/3';
+            }
+            
+        })
+        .fail(function(jqXHR, textStatus, errorThrown) { alertError(jqXHR.status); })
+        .always();
+      });
+    </script>
+{% endblock %}
