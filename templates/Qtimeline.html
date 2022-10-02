@@ -18,7 +18,7 @@
             <br>
             <div class="tab-content" id="nav-tabContent">
                 <div id="q01"  class="tab-pane show active">
-                    <img src="/static/quiz/2-1.png" alt="">
+                    <img src="/static/quiz/2-1-Q.png" alt="">
                     <div class="form-group">
                       <hr>
                       <h3 id="01ans"></h3>
@@ -34,7 +34,7 @@
                     </div>
                 </div>
                 <div id="q02"  class="tab-pane fade">
-                    <img src="/static/quiz/2-2.png" alt="">
+                    <img src="/static/quiz/2-2-Q.png" alt="">
                     <div class="form-group">
                       <hr>
                       <h3 id="02ans"></h3>
@@ -70,13 +70,11 @@
         $.ajax({'type': 'POST', 'data': formData, 'url': '/checkq2'})
         .done(function(data, textStatus, jqXHR) {
             if(data['result']){
-              toastr.success('^_^');
-              alert('Please enter the next challenge~~');
+              alert(data['ans']);
               window.location = '/3';
             }
             else{
-              toastr.error('T_T');
-              alert('Are you sure? ^_^');
+              alert('Oops... Please check the PPT.\nFor Q1, please check p.5\nFor Q2, please check p.4 or 5\n');
               window.location = '/story2';
             }
             

@@ -1,22 +1,50 @@
 {% extends 'base.html' %}
 {%- set site_title = 'Universal Explorer' -%}
-{%- set html_title = 'Mixing'-%}
+{%- set html_title = 'Launch'-%}
 
 {% block content %}
     <br><br>
-    <h1 class="text-center mt-3">{{ html_title }}</h1>
-    <hr>
-    <div class="icon" style="float: left;">
-      <img src="/static/cup.png" alt="">
-    </div>
-    <div class="icon" style="float: right;">
-      <img src="/static/cup.png" alt="">
-    </div>
-    <div class="icon" style="float: left bottom;">
-      <img src="/static/cup.png" alt="">
-    </div>
-    <div class="icon" style="float: right bottom;">
-      <img src="/static/cup.png" alt="">
-    </div>
-    <br><br><br><br><br><br><br><br><br><br>
+<!--    <h1 class="text-center mt-3">{{ html_title }}</h1>
+    <hr>-->
+    <div class="container">
+      <div class="ani_move1">
+        <div class="col-2" style="float: left;">
+          <div class="small">
+            <img src="/static/camera.png" alt=""></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="ani_move2">
+        <div class="row justify-content-end">
+          <div class="col-3">
+            <div class="small">
+              <img src="/static/solar-energy.png" alt="">
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <div class="ani_move3 col-2" style="float: bottom;">
+        <div class="small">
+          <img src="/static/crucible.png" alt="">
+        </div>
+      </div>
+
+      <div  class="row justify-content-end">   
+        <div class="ani_move4 col-3" style="float: bottom;">
+          <div class="small">
+            <img src="/static/dna.png" alt="">
+          </div>
+        </div>
+      </div>
+
+      <div class="carousel slide carousel-fade" delay: { "show": 50000, "hide": 7000 }>
+          <div class="video">
+            <video src="/static/Parker_Solar_Probe.mp4" muted autoplay loop></video>
+          </div>
+      </div>
+
+<br><br>
 {% endblock %}
+

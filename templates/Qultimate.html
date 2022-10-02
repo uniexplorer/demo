@@ -8,7 +8,9 @@
     <hr>
     <div class="row">
       <div class="material col-2">
-        <img src="/static/crucible.png" class="mt-3" width="50" height="55" alt="">
+        <div class="cam_move">
+          <img src="/static/crucible.png" class="mt-3" width="50" height="55" alt="">
+        </div>
       </div>
       <div class="col-10">
         <h5 class="color-one">Congratulation! You got Niobium-C103.  </h5>
@@ -87,13 +89,11 @@
         $.ajax({'type': 'POST', 'data': formData, 'url': '/checkq3'})
         .done(function(data, textStatus, jqXHR) {
             if(data['result']){
-              toastr.success('^_^');
-              alert('Please enter the next challenge~~');
+              alert(data['ans']);
               window.location = '/finish';
             }
             else{
-              toastr.error('T_T');
-              alert('Are you sure? ^_^');
+              alert('Well...Keep going! Please check the PPT.\nFor Q1, please check p.3\nFor Q2, please check p.4 or 5');
               window.location = '/3';
             }
             

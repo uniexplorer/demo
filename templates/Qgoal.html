@@ -112,13 +112,11 @@
         $.ajax({'type': 'POST', 'data': formData, 'url': '/checkq1'})
         .done(function(data, textStatus, jqXHR) {
             if(data['result']){
-              toastr.success('^_^');
-              alert('Please enter the next challenge~~');
+              alert(data['ans']);
               window.location = '/2';
             }
             else{
-              toastr.error('T_T');
-              alert('Are you sure? ^_^');
+              alert('Sorry... Please check the PPT. Keep going!\nFor Q1, please check p.3\nFor Q2, please check p.4 or 5\nFor Q3, please check p.6\nFor Q4, please check p.5');
               window.location = '/story1';
             }
             

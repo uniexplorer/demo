@@ -6,6 +6,10 @@ app = Flask(__name__)
 
 @app.route('/')
 def home():
+    return render_template('home0.html')
+
+@app.route('/1')
+def home1():
     return render_template('home.html')
 
 
@@ -17,6 +21,10 @@ def home2():
 @app.route('/3')
 def home3():
     return render_template('home3.html')
+
+@app.route('/rocket')
+def rocket():
+    return render_template('rocket.html')
 
 
 @app.route('/last')
@@ -43,9 +51,11 @@ def technology():
 def finish():
     return render_template('finish.html')
 
+
 @app.route('/collect')
 def collect():
     return render_template('collect.html')
+
 
 @app.route('/test')
 def test():
@@ -78,9 +88,14 @@ def checkq1():
         c += 1
     if request.form['04'] == 'D':
         c += 1
-    if c >= 2:
-        return {'result': True}
-    return {'result': False}
+    return {
+        'result': c >= 2,
+        '01': request.form['01'] == 'C',
+        '02': request.form['02'] == 'B',
+        '03': request.form['03'] == 'B',
+        '04': request.form['04'] == 'D',
+        'ans': 'Please enter the next challenge~~ (Timeline)\nQ1. C\nQ2. B\nQ3. B\nQ4. D'
+    }
 
 
 @app.route('/checkq2', methods=['POST'])
@@ -90,9 +105,12 @@ def checkq2():
         c += 1
     if request.form['02'] == 'A':
         c += 1
-    if c >= 1:
-        return {'result': True}
-    return {'result': False}
+    return {
+        'result': c >= 1,
+        '01': request.form['01'] == 'A',
+        '02': request.form['02'] == 'A',
+        'ans': 'Please enter the next challenge~~ (Technology)\nQ1. A\nQ2. A'
+    }
 
 
 @app.route('/checkq3', methods=['POST'])
@@ -102,9 +120,12 @@ def checkq3():
         c += 1
     if request.form['02'] == 'D':
         c += 1
-    if c >= 1:
-        return {'result': True}
-    return {'result': False}
+    return {
+        'result': c >= 1,
+        '01': request.form['01'] == 'C',
+        '02': request.form['02'] == 'D',
+        'ans': 'Please enter the next challenge~~ (Ultimate Challenge)\nQ1. C\nQ2. D'
+    }
 
 
 @app.route('/checkq4', methods=['POST'])
@@ -114,9 +135,12 @@ def checkq4():
         c += 1
     if request.form['02'] == 'A':
         c += 1
-    if c >= 1:
-        return {'result': True}
-    return {'result': False}
+    return {
+        'result': c >= 1,
+        '01': request.form['01'] == 'B',
+        '02': request.form['02'] == 'A',
+        'ans': 'Please enter the next challenge~~\nQ1. B\nQ2. A'
+    }
 
 
 app.run(host='0.0.0.0', port=81)

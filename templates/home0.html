@@ -1,0 +1,52 @@
+{% extends 'base.html' %}
+{%- set site_title = 'Universal Explorer' -%}
+{%- set html_title = 'Before the Launch'-%}
+
+{% block content %}
+    <br><br>
+    <h1 class="text-center mt-3">{{ html_title }}</h1>
+    <hr>
+    <div class="container">
+      <br>
+      <div class="row text-center btn-block">
+        <div class="col-lg-4">
+          <div class="card block">
+            <img src="/static/parker2.jpg" width="400">
+            <div class="card-body">
+              <h5 class="block-text">Goal</h5>
+              <a href="/story1" class="btn disabled">Let's Go</a>
+            </div>
+          </div>
+        </div>
+        
+        <div class="col-lg-4">
+          <div class="card block">
+            <img src="/static/parker.jpg" width="400">
+            <div class="card-body">
+              <h5 class="block-text">Timeline</h5>
+              <a href="/story2" class="btn disabled">Let's Go</a>
+            </div>
+          </div>
+        </div>
+        <div class="col-lg-4">
+          <div class="card block">
+            <img src="/static/parker3.jpg" width="400">
+            <div class="card-body">
+              <h5 class="block-text">Technology</h5>
+              <a href="/story3" class="btn disabled">Let's Go</a>
+            </div>
+          </div>
+        </div>
+      </div>
+      <br><br>
+      <div class="row text-center">
+        <div class="col-lg-6">
+          <a href="/1" class="btn ">Start out challenge! </a>
+        </div>
+        <div class="col-lg-6">
+          <a href="/rocket" class="btn ">Game</a>
+        </div>
+      </div>
+    </div>
+
+{% endblock %}

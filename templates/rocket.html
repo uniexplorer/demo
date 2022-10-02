@@ -1,0 +1,16 @@
+{% extends 'base.html' %}
+{%- set site_title = 'Universal Explorer' -%}
+{%- set html_title = 'Game - Rocket'-%}
+
+{% block content %}
+    <br><br>
+    <h1 class="text-center mt-3">{{ html_title }}</h1>
+    <hr>
+    <div class="container">
+      <h5 class='text-center'>Move your mouse over the rocket. </h5>
+      <div class="rocket" align="bottom">
+        <img src="/static/rocket1.png" alt="">
+      </div>
+    </div>
+    
+{% endblock %}

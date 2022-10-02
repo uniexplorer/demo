@@ -15,10 +15,10 @@ h1 {
 }
 
 h3 {
-  color:#a4a4ea;
+  color: #a4a4ea;
 }
 .color-one {
-    color: #FA9F42;
+    color:#FA9F42;
 }
 
 .block {
@@ -71,11 +71,10 @@ img {
 .ani_move1{
     display: block;
     position: relative;
-
     /* animation 參數設定 */
     animation-name: Move1;    /*動畫名稱，需與 keyframe 名稱對應*/
     animation-duration: 1s;    /*動畫持續時間，單位為秒*/
-    animation-delay: 2s;     /*動畫延遲開始時間*/
+    animation-delay: 1s !important;     /*動畫延遲開始時間*/
     animation: 1s Move1 forwards;
  /*   animation-iteration-count: infinite; */   /*動畫次數，infinite 為無限次*/  
 }
@@ -91,13 +90,45 @@ img {
     /* animation 參數設定 */
     animation-name: Move2;    /*動畫名稱，需與 keyframe 名稱對應*/
     animation-duration: 1s;    /*動畫持續時間，單位為秒*/
-    animation-delay: 2s;     /*動畫延遲開始時間*/
+    animation-delay: 2s !important;     /*動畫延遲開始時間*/
     animation: 1s Move2 forwards;
  /*   animation-iteration-count: infinite; */   /*動畫次數，infinite 為無限次*/  
 }
 @keyframes Move2{
 	0% {transform: translate(0, 0);}
-	100% {transform: translate(400px, 130px);}
+	100% {transform: translate(-400px, 130px);}
+}
+
+.ani_move3{
+    display: block;
+    position: relative;
+
+    /* animation 參數設定 */
+    animation-name: Move3;    /*動畫名稱，需與 keyframe 名稱對應*/
+    animation-duration: 1s;    /*動畫持續時間，單位為秒*/
+    animation-delay: 3s !important;     /*動畫延遲開始時間*/
+    animation: 1s Move3 forwards;
+ /*   animation-iteration-count: infinite; */   /*動畫次數，infinite 為無限次*/  
+}
+@keyframes Move3{
+	0% {transform: translate(0, 0);}
+	100% {transform: translate(400px, -80px);}
+}
+
+.ani_move4{
+    display: block;
+    position: relative;
+
+    /* animation 參數設定 */
+    animation-name: Move4;    /*動畫名稱，需與 keyframe 名稱對應*/
+    animation-delay: 4s !important;
+    animation-duration: 1s;    /*動畫持續時間，單位為秒*/     /*動畫延遲開始時間*/
+    animation: 1s Move4 forwards;
+ /*   animation-iteration-count: infinite; */   /*動畫次數，infinite 為無限次*/  
+}
+@keyframes Move4{
+	0% {transform: translate(0, 0);}
+	100% {transform: translate(-400px, -230px);}
 }
 
 .material {
@@ -130,6 +161,78 @@ img {
 }
 
 .icon{
-  height: 50px;
-  width: 50px;
+  height: 100px;
+  width: 100px;
+}
+
+.small{
+  display: block;
+  position: relative;
+
+  /* animation 參數設定 */
+  animation-name: become_small;    /*動畫名稱，需與 keyframe 名稱對應*/
+  animation-duration: 1s;    /*動畫持續時間，單位為秒*/
+  animation-delay: 5s !important;     /*動畫延遲開始時間*/
+  animation: 1s become_small forwards;
+}
+@keyframes become_small{
+  40% {transform: scale(0.1)}
+  40% {box-shadow: 0px 0px 500px 100px #eeff00}
+  100% {box-shadow: 0px 0px 500px 100px #eeff00}
+  100% {opacity: 0;}
+}
+
+.shinny{
+  display: block;
+  position: relative;
+  animation-name: shi;
+  animation-duration: 3s;
+}
+@keyframes shi{
+  100% {box-shadow: 0px 0px 100px 10px #eeff00}
+}
+
+.nono{
+  animation-name: oh;
+  animation-duration: 7s;
+  animation: 1s oh forwards;
+/*  animation-delay: 6s !important;*/
+}
+
+@keyframes oh{
+  0%{
+      opacity:0;
+    }
+  99%{
+      opacity:0; 
+  }
+  100%{
+      opacity:1;
+    }
+}
+
+
+video {
+  position: absolute ;
+  width: 100%;
+  height:100%;
+  mix-blend-mode: screen;
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  align-items:center;
+}
+
+.rocket{
+    position: absolute;
+    height: 120px;
+    bottom: 0;
+    transform: rotate(10deg);
+    transition: all 10s ease-out;
+    /*animation-name: rc;
+    animation: 1s rc forwards;*/
+}
+.rocket:hover{
+    transform: translate(800px, -800px) rotate(10deg);
 }
