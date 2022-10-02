@@ -22,6 +22,10 @@ def home2():
 def home3():
     return render_template('home3.html')
 
+@app.route('/4')
+def home4():
+    return render_template('home4.html')
+
 @app.route('/rocket')
 def rocket():
     return render_template('rocket.html')

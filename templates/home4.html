@@ -1,0 +1,46 @@
+{% extends 'base.html' %}
+{%- set site_title = 'Universal Explorer' -%}
+{%- set html_title = 'Enter Ultimate Challenge'-%}
+
+{% block content %}
+    <br><br>
+    <h1 class="text-center mt-3">{{ html_title }}</h1>
+    <hr>
+    
+    <div class="container">
+      <div class="row text-center btn-block">
+        <div class="col-lg-4">
+          <div class="card block">
+            <img src="/static/parker.jpg" width="400">
+            <div class="card-body">
+              <h5 class="block-text">Goal</h5>
+              <a href="/story1" class="btn">Let's Go</a>
+            </div>
+          </div>
+        </div>
+        
+        <div class="col-lg-4">
+          <div class="card block">
+            <img src="/static/parker2.jpg" width="400">
+            <div class="card-body">
+              <h5 class="block-text">Travel with Parker</h5>
+              <a href="/story2" class="btn">Let's Go</a>
+            </div>
+          </div>
+        </div>
+        <div class="col-lg-4">
+          <div class="card block">
+            <img src="/static/parker.jpg" width="400">
+            <div class="card-body">
+              <h5 class="block-text">Travel with Parker</h5>
+              <a href="/story3" class="btn">Let's Go</a>
+            </div>
+          </div>
+        </div>
+      </div>
+      <br>
+      <a href="/last" class="btn"> ultimate challenge </a>
+    </div>
+
+    
+{% endblock %}
